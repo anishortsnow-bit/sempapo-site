@@ -147,6 +147,71 @@
     }
   }
 
+
+  /* ---------- busca com sugestões (radar) ---------- */
+  var auto = document.querySelector("[data-autocomplete]");
+  if (auto) {
+    var campo = auto.querySelector("input"), lista = auto.querySelector(".busca-sugestoes");
+    var indice = null, carregando = null, sel = -1, itens = [];
+    var norm = function (s) { return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(); };
+    var limpa = function (s) { return norm(s).replace(/[^a-z0-9]+/g, " ").trim(); };
+    var apelidos = function (b) { return b + " " + b.replace(/playstation\s?(\d)/g, "ps$1").replace(/nintendo\s/g, "").replace(/\s(\d+)\s(gb|tb)/g, " $1$2"); };
+    var carrega = function () {
+      if (indice) return Promise.resolve();
+      if (!carregando) {
+        carregando = fetch("/static/busca.json").then(function (r) { return r.json(); }).then(function (j) {
+          indice = j.map(function (x) { x._n = apelidos(limpa(x.n + " " + x.c)); return x; });
+        }).catch(function () { indice = []; });
+      }
+      return carregando;
+    };
+    var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+    var realca = function (nome, termos) {
+      var h = esc(nome);
+      termos.forEach(function (t) {
+        if (t.length < 2) return;
+        var i = norm(h).indexOf(t);
+        if (i >= 0) h = h.slice(0, i) + "<mark>" + h.slice(i, i + t.length) + "</mark>" + h.slice(i + t.length);
+      });
+      return h;
+    };
+    var fecha = function () { lista.hidden = true; campo.setAttribute("aria-expanded", "false"); sel = -1; };
+    var mostra = function () {
+      var q = limpa(campo.value);
+      if (q.length < 3) { fecha(); return; }
+      var termos = q.split(/\s+/).filter(Boolean);
+      itens = indice.filter(function (x) { return termos.every(function (t) { return x._n.indexOf(t) >= 0; }); })
+        .sort(function (a, b) { return (a._n.indexOf(termos[0]) - b._n.indexOf(termos[0])) || (a.n.length - b.n.length); }).slice(0, 8);
+      if (!itens.length) {
+        lista.innerHTML = '<li class="bs-vazio">Ainda não vigiamos \u201c' + esc(campo.value.trim()) + '\u201d. Peça no <a href="https://t.me/promocaosempapo">Telegram</a> que a gente põe no radar.</li>';
+      } else {
+        lista.innerHTML = itens.map(function (x, k) {
+          return '<li role="option" id="bs-' + k + '" data-k="' + k + '"><img src="' + esc(x.i) + '" alt="" loading="lazy">' +
+            '<span class="bs-nome">' + realca(x.n, termos) + '<span class="bs-cat">' + esc(x.c) + "</span></span>" +
+            '<span class="bs-preco">' + reais(x.p) + "<small>hoje no " + esc(x.l) + "</small></span></li>";
+        }).join("");
+      }
+      lista.hidden = false; campo.setAttribute("aria-expanded", "true"); sel = -1;
+    };
+    var vai = function (k) { if (itens[k]) location.href = "/" + itens[k].s + "/"; };
+    campo.addEventListener("focus", carrega);
+    campo.addEventListener("input", function () { carrega().then(mostra); });
+    campo.addEventListener("keydown", function (e) {
+      if (lista.hidden) return;
+      var lis = lista.querySelectorAll("li[role=option]");
+      if (!lis.length) return;
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        sel = (sel + (e.key === "ArrowDown" ? 1 : -1) + lis.length) % lis.length;
+        lis.forEach(function (li, i) { li.setAttribute("aria-selected", i === sel ? "true" : "false"); });
+        campo.setAttribute("aria-activedescendant", "bs-" + sel);
+      } else if (e.key === "Enter") { e.preventDefault(); vai(sel >= 0 ? sel : 0); }
+      else if (e.key === "Escape") { fecha(); }
+    });
+    lista.addEventListener("mousedown", function (e) { var li = e.target.closest("li[data-k]"); if (li) { e.preventDefault(); vai(+li.dataset.k); } });
+    document.addEventListener("click", function (e) { if (!auto.contains(e.target)) fecha(); });
+  }
+
   /* ---------- entrada suave das seções ---------- */
   var surgem = document.querySelectorAll(".surge");
   if ("IntersectionObserver" in window && !semMovimento) {
@@ -182,13 +247,15 @@
     var chips = document.querySelectorAll("[data-filtro]"), contador = document.querySelector("[data-contador]");
     var vazio = document.querySelector("[data-vazio]");
     var filtroCat = "todas", filtroSelo = "todos";
-    var normaliza = function (s) { return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase(); };
+    var normaliza = function (s) { return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); };
+    var apelidos = function (b) { return b + " " + b.replace(/playstation\s?(\d)/g, "ps$1").replace(/nintendo\s/g, "").replace(/\s(\d+)\s(gb|tb)/g, " $1$2"); };
+    cards.forEach(function (c) { c._n = apelidos(normaliza(c.dataset.nome || "")); });
     var aplica = function () {
-      var termo = normaliza(busca ? busca.value : "");
+      var termos = normaliza(busca ? busca.value : "").split(" ").filter(Boolean);
       var vis = 0;
       cards.forEach(function (c) {
         var ok = (filtroCat === "todas" || c.dataset.cat === filtroCat) && (filtroSelo === "todos" || c.dataset.selo === filtroSelo) &&
-                 (!termo || normaliza(c.dataset.nome).indexOf(termo) >= 0);
+                 (!termos.length || termos.every(function (t) { return c._n.indexOf(t) >= 0; }));
         c.hidden = !ok; if (ok) vis++;
       });
       if (contador) contador.textContent = vis + (vis === 1 ? " produto" : " produtos");
