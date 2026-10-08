@@ -504,3 +504,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .etiqueta .etq-grafico path.area { opacity: 1; }
   .palco .carimbo { opacity: .95; transform: rotate(-12deg); }
 }
+
+/* detector v2: produto, ajuda do histórico e etiqueta-guia */
+.caixa-texto { border: 3px solid var(--preto); border-radius: 12px; background: var(--papel); }
+.caixa-texto input { width: 100%; border: 0; background: transparent; font: 600 19px/1.2 var(--texto); padding: 14px; color: var(--preto); }
+.caixa-texto input:focus { outline: none; }
+.caixa-texto:focus-within { background: var(--branco); box-shadow: 0 0 0 4px rgba(42,171,238,.35); }
+.ajuda-historico { font-size: 14px; font-weight: 700; color: #1A6FA3; text-decoration: underline; text-underline-offset: 3px; justify-self: start; }
+.produto-checado { font: 700 13px/1.3 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--cinza); }
+.explica-detector { display: grid; gap: 18px; align-content: start; }
+.etiqueta-guia { background: var(--branco); border: 3px solid var(--preto); border-radius: var(--raio-g); padding: 20px 22px; box-shadow: var(--sombra-dura); display: grid; gap: 6px; transform: rotate(-1.5deg); }
+.eg-loja { font: 700 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--cinza); }
+.eg-nome { font-weight: 800; font-size: 18px; }
+.eg-de { font: 700 17px/1.3 var(--mono); color: var(--cinza); }
+.eg-por { font-family: var(--display); font-size: 42px; line-height: 1.1; }
+.eg-seta { font: 700 13px/1 var(--mono); color: #fff; background: var(--tg); padding: 5px 8px; border-radius: 6px; vertical-align: middle; margin-left: 8px; letter-spacing: 0; text-decoration: none; display: inline-block; }
+.eg-por .eg-seta { font-size: 13px; }
+.eg-pct { justify-self: start; background: var(--vermelho); color: #fff; font: 700 14px/1 var(--mono); padding: 6px 9px; border-radius: 6px; }
+.eg-texto { margin: 0; font-size: 16.5px; }
+.eg-texto.pequeno { font-size: 14.5px; color: var(--cinza); }
+.explica-detector .btn { justify-self: start; }
+.caixa-preco input::placeholder, .caixa-texto input::placeholder { color: #BDB59A; font-weight: 400; }

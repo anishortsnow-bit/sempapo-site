@@ -74,62 +74,75 @@
   /* ---------- detector de desconto falso ---------- */
   var det = document.querySelector("[data-detector]");
   if (det) {
-    var cDe = det.querySelector("[name=de]"), cPor = det.querySelector("[name=por]"),
-        cNormal = det.querySelector("[name=normal]"), cMenor = det.querySelector("[name=menor]");
-    var saida = det.querySelector("[data-veredito]");
+    var cProd = det.querySelector("[name=produto]"), cDe = det.querySelector("[name=de]"),
+        cPor = det.querySelector("[name=por]"), cNormal = det.querySelector("[name=normal]");
+    var saida = det.querySelector("[data-veredito]"), linkHist = det.querySelector("[data-historico]");
+    var atualizaLink = function () {
+      var n = cProd.value.trim();
+      linkHist.href = n ? "https://www.google.com/search?tbm=shop&q=" + encodeURIComponent(n) : "https://shopping.google.com/";
+      linkHist.textContent = n ? "Não sabe? Ver o histórico de preço de \u201c" + (n.length > 28 ? n.slice(0, 28) + "\u2026" : n) + "\u201d \u2197" : "Não sabe? Ver o histórico de preço deste produto \u2197";
+    };
+    cProd.addEventListener("input", atualizaLink);
     var analisa = function (anima) {
-      var de = lerReais(cDe.value), por = lerReais(cPor.value), normal = lerReais(cNormal.value), menor = lerReais(cMenor.value);
-      if (!(por > 0) || !(normal > 0)) {
-        saida.innerHTML = '<p class="vazio">Preencha pelo menos o preço de agora e o preço normal. O resultado aparece aqui.</p>';
-        return;
+      var nome = cProd.value.trim(), de = lerReais(cDe.value), por = lerReais(cPor.value), normal = lerReais(cNormal.value);
+      if (!(por > 0)) {
+        saida.innerHTML = '<p class="vazio">Coloque pelo menos o preço de agora.</p>'; cPor.focus(); return;
+      }
+      if (!(normal > 0)) {
+        saida.innerHTML = (de > por ? '<div class="numeros"><div><small>Desconto anunciado</small><b>' + pct(1 - por / de) + "</b></div></div>" : "") +
+          '<p>Falta o <b>quanto ele costumava custar</b>. Sem isso, não dá para saber se o desconto é real: o \u201cde\u201d pode ter sido inventado. ' +
+          'Use o link \u201cver o histórico\u201d logo acima.</p>';
+        cNormal.focus(); return;
       }
       var anunciado = de > por ? 1 - por / de : 0;
       var real = 1 - por / normal;
       var deInflado = de > 0 && de >= normal * 1.25;
       var selo, cor, texto;
-      if (menor > 0 && por <= menor * 1.03) {
+      if (real >= 0.15) {
         selo = "Preço real"; cor = "verde";
-        texto = "Está no menor preço dos últimos meses (ou a menos de 3% dele). Se o produto é o que você quer, é hora." +
-          (deInflado ? " Só ignore o “de” riscado: ele é inflado, e o desconto de verdade é " + pct(Math.max(0, real)) + "." : "");
-      } else if (deInflado && real < Math.max(0.05, anunciado * 0.5)) {
+        texto = "Está " + reais(normal - por) + " abaixo do que costumava custar. Desconto de verdade." +
+          (deInflado ? " Só ignore o percentual da loja: o \u201cde\u201d é inflado, e o desconto real é " + pct(real) + "." : "");
+      } else if (deInflado) {
         selo = "Maquiado"; cor = "";
-        texto = "O “de” de " + reais(de) + " é " + pct(de / normal - 1) + " maior que o preço normal. O desconto anunciado não existe.";
-      } else if (real >= 0.15) {
-        selo = "Preço real"; cor = "verde";
-        texto = "Está " + reais(normal - por) + " abaixo do preço normal. Desconto de verdade.";
+        texto = "O \u201cde\u201d de " + reais(de) + " é " + pct(de / normal - 1) + " maior do que o produto costumava custar. O desconto anunciado não existe.";
       } else if (real >= 0.05) {
         selo = "Espere"; cor = "ambar";
-        texto = "Tem desconto, mas pequeno (" + pct(real) + "). Em datas como a Black Friday, esse produto costuma cair mais.";
+        texto = "Tem desconto, mas pequeno (" + pct(real) + "). Em datas como a Black Friday, esse tipo de produto costuma cair mais.";
       } else if (real > -0.02) {
         selo = anunciado >= 0.2 ? "Maquiado" : "Espere"; cor = anunciado >= 0.2 ? "" : "ambar";
-        texto = anunciado >= 0.2 ? "A loja anuncia " + pct(anunciado) + " de desconto, mas o preço é o de sempre." : "É o preço de sempre. Não tem promoção aqui.";
+        texto = anunciado >= 0.2 ? "A loja anuncia " + pct(anunciado) + " de desconto, mas é o preço de sempre." : "É o preço de sempre. Não tem promoção aqui.";
       } else {
         selo = "Maquiado"; cor = "";
-        texto = "Está " + reais(por - normal) + " ACIMA do preço normal. Fuja.";
+        texto = "Está " + reais(por - normal) + " ACIMA do que costumava custar. Fuja.";
       }
       saida.innerHTML =
+        (nome ? '<span class="produto-checado">' + nome.replace(/[<>&]/g, "") + "</span>" : "") +
         '<span class="carimbo ' + cor + (anima ? " bate" : "") + '">' + selo + "</span>" +
-        '<div class="numeros"><div class="' + (anunciado > real + 0.05 ? "falso" : "") + '"><small>Desconto anunciado</small><b>' + (de > por ? pct(anunciado) : "—") + "</b></div>" +
+        '<div class="numeros"><div class="' + (anunciado > real + 0.05 ? "falso" : "") + '"><small>Desconto anunciado</small><b>' + (de > por ? pct(anunciado) : "\u2014") + "</b></div>" +
         '<div class="real"><small>Desconto real</small><b>' + (real > 0 ? pct(real) : "0%") + "</b></div></div>" +
         "<p>" + texto + "</p>" +
         '<div class="acoes-detector"><button type="button" data-copiar>Copiar link do resultado</button></div>';
       var q = new URLSearchParams();
-      if (de) q.set("de", de); q.set("por", por); q.set("normal", normal); if (menor) q.set("menor", menor);
+      if (nome) q.set("produto", nome); if (de) q.set("de", de); q.set("por", por); q.set("normal", normal);
       history.replaceState(null, "", "#detector?" + q.toString());
     };
     det.addEventListener("submit", function (e) { e.preventDefault(); analisa(true); });
-    [cDe, cPor, cNormal, cMenor].forEach(function (c) { c.addEventListener("change", function () { analisa(false); }); });
     det.addEventListener("click", function (e) {
       if (e.target.matches("[data-copiar]")) {
-        navigator.clipboard && navigator.clipboard.writeText(location.href).then(function () { e.target.textContent = "Link copiado ✓"; });
+        navigator.clipboard && navigator.clipboard.writeText(location.href).then(function () { e.target.textContent = "Link copiado \u2713"; });
       }
+    });
+    var botaoEx = document.querySelector("[data-exemplo]");
+    if (botaoEx) botaoEx.addEventListener("click", function () {
+      cProd.value = "Smart TV 55\u201d 4K (exemplo)"; cDe.value = "5.999"; cPor.value = "2.999"; cNormal.value = "2.899";
+      atualizaLink(); analisa(true); det.scrollIntoView({ behavior: semMovimento ? "auto" : "smooth", block: "start" });
     });
     var h = location.hash.split("?")[1];
     if (h) {
       var p = new URLSearchParams(h);
       if (p.get("por")) {
-        cDe.value = p.get("de") || ""; cPor.value = p.get("por"); cNormal.value = p.get("normal") || ""; cMenor.value = p.get("menor") || "";
-        analisa(true);
+        cProd.value = p.get("produto") || ""; cDe.value = p.get("de") || ""; cPor.value = p.get("por"); cNormal.value = p.get("normal") || "";
+        atualizaLink(); analisa(true);
       }
     }
   }

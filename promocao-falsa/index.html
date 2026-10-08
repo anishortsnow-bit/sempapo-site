@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
 <link rel="preload" href="/static/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/static/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/static/css/site.css?v=202610081917">
+<link rel="stylesheet" href="/static/css/site.css?v=202610081924">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "acceptedAnswer": {"@type": "Answer", "text": "\u00c9 o pre\u00e7o em que o produto ficou a maior parte do tempo nos \u00faltimos 3 meses. No gr\u00e1fico de hist\u00f3rico, \u00e9 onde a linha passa mais tempo."}, "name": "O que \u00e9 o pre\u00e7o normal?"}, {"@type": "Question", "acceptedAnswer": {"@type": "Answer", "text": "N\u00e3o. Mas quanto maior o desconto anunciado, maior a chance de o \u201cde\u201d ter sido inflado. Compare sempre com o hist\u00f3rico."}, "name": "Desconto de 50% \u00e9 sempre mentira?"}, {"@type": "Question", "acceptedAnswer": {"@type": "Answer", "text": "Zoom, Buscap\u00e9 e Google Shopping mostram o gr\u00e1fico dos \u00faltimos meses. Na Amazon, o Keepa faz isso."}, "name": "Onde vejo o hist\u00f3rico de pre\u00e7o de gra\u00e7a?"}, {"@type": "Question", "acceptedAnswer": {"@type": "Answer", "text": "A\u00ed n\u00e3o d\u00e1 para saber se o desconto \u00e9 real. Compare o pre\u00e7o entre as lojas confi\u00e1veis e desconfie de \u201cde\u201d muito alto."}, "name": "E se o produto for novo e n\u00e3o tiver hist\u00f3rico?"}]}</script>
 </head>
 <body class="pg-falsa">
@@ -63,47 +63,44 @@
 <div class="detector">
   <form class="recibo surge" data-detector novalidate>
     <h3>Detector de desconto falso</h3>
-    <p class="dica">Digite os números que você está vendo. Leva 20 segundos.</p>
-    <div class="linha-campos">
-      <div class="campo">
-        <label for="d-de">Preço "de" <small>(o riscado)</small></label>
-        <div class="caixa-preco"><span>R$</span><input id="d-de" name="de" inputmode="decimal" autocomplete="off" placeholder="5.999"></div>
-      </div>
-      <div class="campo">
-        <label for="d-por">Preço "por" <small>(agora)</small></label>
-        <div class="caixa-preco"><span>R$</span><input id="d-por" name="por" inputmode="decimal" autocomplete="off" placeholder="2.999"></div>
-      </div>
+    <p class="dica">Viu uma promoção? Copie os números da página da loja.</p>
+    <div class="campo">
+      <label for="d-produto">Qual produto?</label>
+      <div class="caixa-texto"><input id="d-produto" name="produto" autocomplete="off" placeholder="Ex.: Air fryer Philco 6,5 L" list="d-produtos"></div>
+      <datalist id="d-produtos"></datalist>
     </div>
     <div class="linha-campos">
       <div class="campo">
-        <label for="d-normal">Preço normal <small>(o mais comum em 3 meses)</small></label>
-        <div class="caixa-preco"><span>R$</span><input id="d-normal" name="normal" inputmode="decimal" autocomplete="off" placeholder="2.899"></div>
+        <label for="d-de">Preço riscado <small>(o "de")</small></label>
+        <div class="caixa-preco"><span>R$</span><input id="d-de" name="de" inputmode="decimal" autocomplete="off" placeholder="ex.: 499"></div>
       </div>
       <div class="campo">
-        <label for="d-menor">Menor preço <small>(opcional)</small></label>
-        <div class="caixa-preco"><span>R$</span><input id="d-menor" name="menor" inputmode="decimal" autocomplete="off" placeholder="2.749"></div>
+        <label for="d-por">Preço agora <small>(o "por")</small></label>
+        <div class="caixa-preco"><span>R$</span><input id="d-por" name="por" inputmode="decimal" autocomplete="off" placeholder="ex.: 349"></div>
       </div>
+    </div>
+    <div class="campo">
+      <label for="d-normal">Quanto ele costumava custar?</label>
+      <div class="caixa-preco"><span>R$</span><input id="d-normal" name="normal" inputmode="decimal" autocomplete="off" placeholder="ex.: 449"></div>
+      <a class="ajuda-historico" data-historico href="https://shopping.google.com/" rel="nofollow noopener" target="_blank">Não sabe? Ver o histórico de preço deste produto ↗</a>
     </div>
     <button class="btn btn-preto" type="submit">Checar o desconto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     <div class="veredito" data-veredito aria-live="polite">
-      <p class="vazio">Preencha pelo menos o preço de agora e o preço normal. O resultado aparece aqui.</p>
+      <p class="vazio">O selo aparece aqui.</p>
     </div>
   </form>
-  <div class="surge">
-    <span class="rotulo">Onde achar o preço normal</span>
-    <ol class="passos">
-      <li><b>Copie o nome exato do produto</b><span>Com o modelo: "Galaxy S24 FE 128 GB", não só "Galaxy".</span></li>
-      <li><b>Abra um comparador com histórico</b><span>Eles mostram o gráfico dos últimos meses, de graça.</span>
-        <div class="ferramentas">
-          <a href="https://www.zoom.com.br/" rel="nofollow noopener" target="_blank">Zoom</a>
-          <a href="https://www.buscape.com.br/" rel="nofollow noopener" target="_blank">Buscapé</a>
-          <a href="https://shopping.google.com/" rel="nofollow noopener" target="_blank">Google Shopping</a>
-          <a href="https://keepa.com/" rel="nofollow noopener" target="_blank">Keepa (Amazon)</a>
-        </div>
-      </li>
-      <li><b>Olhe a linha dos últimos 3 meses</b><span>O preço em que ela passa mais tempo é o "preço normal". O ponto mais baixo é o "menor preço".</span></li>
-      <li><b>Cole aqui e veja o selo</b><span>Ou deixe com a gente: no Telegram, a checagem já chega pronta.</span></li>
-    </ol>
+  <div class="surge explica-detector">
+    <span class="rotulo">Onde achar cada número</span>
+    <div class="etiqueta-guia" aria-hidden="true">
+      <div class="eg-loja">Página da loja</div>
+      <div class="eg-nome">Air fryer Philco 6,5 L</div>
+      <div class="eg-de"><s>R$ 499,00</s> <span class="eg-seta">← preço riscado</span></div>
+      <div class="eg-por">R$ 349,00 <span class="eg-seta">← preço agora</span></div>
+      <div class="eg-pct">-30% OFF</div>
+    </div>
+    <p class="eg-texto">O <b>"quanto costumava custar"</b> não aparece na loja: é o preço em que o produto ficou a maior parte dos últimos meses. O link "ver o histórico" mostra isso em segundos.</p>
+    <button class="btn btn-amarelo" type="button" data-exemplo>Ver um exemplo pronto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    <p class="eg-texto pequeno">Quer que a gente vigie um produto por você? <a href="https://t.me/promocaosempapo" rel="noopener">Os alertas saem no Telegram</a>.</p>
   </div>
 </div>  </div>
 </section>
@@ -156,6 +153,6 @@
   </div>
 </footer>
 <a class="barra-cel" href="https://t.me/promocaosempapo" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.4l-5-1.6c-1.1-.3-1.1-1.1.2-1.6L20.4 2.8c.9-.3 1.7.2 1.5 1.5Z"/></svg> Receber alertas grátis no Telegram</a>
-<script src="/static/js/site.js?v=202610081917" defer></script>
+<script src="/static/js/site.js?v=202610081924" defer></script>
 </body>
 </html>
