@@ -584,3 +584,54 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .busca-sugestoes .bs-preco { font-size: 17px; }
   .busca-sugestoes .bs-preco small { display: inline; margin-left: 6px; }
 }
+
+/* ---------- oferta checada em vídeo (destaque) ---------- */
+.secao-checados { padding-top: 34px; padding-bottom: 46px; background: var(--papel); border-bottom: 3px solid var(--preto); }
+.checado { position: relative; display: grid; gap: 22px; background: var(--branco); border: 3px solid var(--preto);
+  border-radius: var(--raio-g); box-shadow: 10px 10px 0 var(--preto); padding: 22px; }
+.checado.grande { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: center; padding: 28px; gap: 32px; }
+.checado + .checado { margin-top: 30px; }
+.checado-foto { display: grid; place-items: center; background: var(--amarelo); border: 3px solid var(--preto); border-radius: var(--raio-g);
+  aspect-ratio: 1; padding: 18px; background-image: repeating-linear-gradient(135deg, transparent 0 18px, rgba(255,228,92,.55) 18px 30px); }
+.checado-foto img { width: 100%; height: 100%; object-fit: contain; transition: transform .25s ease; }
+.checado-foto:hover img { transform: scale(1.04) rotate(-1deg); }
+.checado-topo { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-bottom: 10px; }
+.checado-topo .carimbo { font-size: 30px; transform: rotate(-5deg); }
+.checado-tag { display: inline-flex; align-items: center; gap: 8px; font: 700 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase;
+  background: var(--preto); color: var(--verde); padding: 8px 12px; border-radius: 999px; }
+.checado-tag i { width: 9px; height: 9px; border-radius: 50%; background: var(--verde); box-shadow: 0 0 0 4px rgba(0,196,106,.25); animation: pulso 1.8s ease-in-out infinite; }
+.checado h2 { font: 400 clamp(38px, 5vw, 62px)/1 var(--display); text-transform: uppercase; margin: 6px 0 10px; }
+.checado h2 a { color: inherit; text-decoration: none; }
+.checado-resumo { font: 600 19px/1.45 var(--texto); margin: 0 0 12px; }
+.checado-pontos { list-style: none; padding: 0; margin: 0 0 16px; display: grid; gap: 7px; }
+.checado-pontos li { position: relative; padding-left: 30px; font: 600 16px/1.4 var(--texto); }
+.checado-pontos li::before { content: ""; position: absolute; left: 0; top: 1px; width: 20px; height: 20px; border-radius: 50%; background: var(--verde)
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/14px no-repeat; }
+.checado-numeros { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 18px; }
+.checado-numeros div { background: var(--papel); border: 2px solid var(--linha); border-radius: 12px; padding: 10px 12px; }
+.checado-numeros small { display: block; font: 700 11px/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--cinza); }
+.checado-numeros b { font: 400 26px/1.1 var(--display); }
+.checado-numeros div:first-child { background: #E7FAF0; border-color: var(--verde); }
+.checado-numeros div:first-child b { color: var(--verde-escuro); }
+.checado-acoes { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn-grande { font-size: 19px; padding: 20px 26px; position: relative; }
+.btn-grande::after { content: ""; position: absolute; inset: -6px; border-radius: 18px; border: 3px solid var(--verde); opacity: 0; animation: chama 2.4s ease-out infinite; pointer-events: none; }
+@keyframes chama { 0% { opacity: .9; transform: scale(.96); } 70%, 100% { opacity: 0; transform: scale(1.06); } }
+.btn-grande svg { transition: transform .15s ease; } .btn-grande:hover svg { transform: translateX(4px); }
+.checado-nota { margin: 14px 0 0; font: 400 12px/1.5 var(--mono); color: var(--cinza); }
+.prod .checado { margin: 4px 0 22px; box-shadow: 7px 7px 0 var(--preto); }
+.cta-fixo { display: none; }
+@media (max-width: 860px) {
+  .checado.grande { grid-template-columns: 1fr; padding: 20px; gap: 20px; }
+  .checado-foto { max-width: 380px; width: 100%; margin-inline: auto; }
+  .checado-numeros { grid-template-columns: 1fr 1fr; }
+  .checado-numeros div:last-child { grid-column: span 2; }
+  .btn-grande { width: 100%; justify-content: center; }
+  .cta-fixo { display: flex; position: fixed; left: 10px; right: 10px; bottom: 10px; z-index: 50; gap: 10px; align-items: center; justify-content: space-between;
+    background: var(--preto); color: var(--branco); border: 3px solid var(--preto); border-radius: 16px; padding: 10px 10px 10px 14px; box-shadow: 0 10px 30px -8px rgba(17,17,17,.5); }
+  .cta-fixo span { font: 600 13px/1.3 var(--texto); } .cta-fixo b { color: var(--verde); }
+  .cta-fixo .btn { padding: 12px 14px; font-size: 15px; white-space: nowrap; box-shadow: none; }
+  body:has(.cta-fixo) { padding-bottom: 86px; }
+}
+@media (prefers-reduced-motion: reduce) { .btn-grande::after, .checado-tag i { animation: none; } }
+
