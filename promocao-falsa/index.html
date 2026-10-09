@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
 <link rel="preload" href="/static/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/static/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/static/css/site.css?v=202610082029">
+<link rel="stylesheet" href="/static/css/site.css?v=202610082220">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "acceptedAnswer": {"@type": "Answer", "text": "\u00c9 o pre\u00e7o em que o produto ficou a maior parte do tempo nos \u00faltimos 3 meses. No gr\u00e1fico de hist\u00f3rico, \u00e9 onde a linha passa mais tempo."}, "name": "O que \u00e9 o pre\u00e7o normal?"}, {"@type": "Question", "acceptedAnswer": {"@type": "Answer", "text": "N\u00e3o. Mas quanto maior o desconto anunciado, maior a chance de o \u201cde\u201d ter sido inflado. Compare sempre com o hist\u00f3rico."}, "name": "Desconto de 50% \u00e9 sempre mentira?"}, {"@type": "Question", "acceptedAnswer": {"@type": "Answer", "text": "Zoom, Buscap\u00e9 e Google Shopping mostram o gr\u00e1fico dos \u00faltimos meses. Na Amazon, o Keepa faz isso."}, "name": "Onde vejo o hist\u00f3rico de pre\u00e7o de gra\u00e7a?"}, {"@type": "Question", "acceptedAnswer": {"@type": "Answer", "text": "A\u00ed n\u00e3o d\u00e1 para saber se o desconto \u00e9 real. Compare o pre\u00e7o entre as lojas confi\u00e1veis e desconfie de \u201cde\u201d muito alto."}, "name": "E se o produto for novo e n\u00e3o tiver hist\u00f3rico?"}]}</script>
 </head>
 <body class="pg-falsa">
@@ -63,11 +63,15 @@
 <div class="detector">
   <form class="recibo surge" data-detector novalidate>
     <h3>Detector de desconto falso</h3>
-    <p class="dica">Viu uma promoção? Copie os números da página da loja.</p>
+    <p class="dica">Viu uma promoção? Escolha o produto e copie os números da página da loja.</p>
     <div class="campo">
       <label for="d-produto">Qual produto?</label>
-      <div class="caixa-texto"><input id="d-produto" name="produto" autocomplete="off" placeholder="Ex.: Air fryer Philco 6,5 L" list="d-produtos"></div>
-      <datalist id="d-produtos"></datalist>
+      <div class="caixa-texto auto-radar">
+        <input id="d-produto" name="produto" autocomplete="off" spellcheck="false" placeholder="Comece a digitar: Galaxy, air fryer, PS5…"
+               role="combobox" aria-expanded="false" aria-controls="d-sugestoes" aria-autocomplete="list">
+        <ul class="busca-sugestoes" id="d-sugestoes" role="listbox" hidden></ul>
+      </div>
+      <div class="radar-produto" data-radar-produto aria-live="polite" hidden></div>
     </div>
     <div class="linha-campos">
       <div class="campo">
@@ -82,6 +86,7 @@
     <div class="campo">
       <label for="d-normal">Quanto ele costumava custar?</label>
       <div class="caixa-preco"><span>R$</span><input id="d-normal" name="normal" inputmode="decimal" autocomplete="off" placeholder="ex.: 449"></div>
+      <small class="nota-radar" data-nota-normal hidden></small>
       <a class="ajuda-historico" data-historico href="https://shopping.google.com/" rel="nofollow noopener" target="_blank">Não sabe? Ver o histórico de preço deste produto ↗</a>
     </div>
     <button class="btn btn-preto" type="submit">Checar o desconto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
@@ -153,6 +158,6 @@
   </div>
 </footer>
 <a class="barra-cel" href="https://t.me/promocaosempapo" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.4l-5-1.6c-1.1-.3-1.1-1.1.2-1.6L20.4 2.8c.9-.3 1.7.2 1.5 1.5Z"/></svg> Receber alertas grátis no Telegram</a>
-<script src="/static/js/site.js?v=202610082029" defer></script>
+<script src="/static/js/site.js?v=202610082220" defer></script>
 </body>
 </html>

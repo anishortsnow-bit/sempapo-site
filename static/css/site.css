@@ -558,3 +558,29 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .lojas-radar li span { grid-column: 2; font: 400 12.5px/1.35 var(--mono); color: var(--cinza-claro); }
 .lojas-nota { margin: 14px 0 0; font: 400 12.5px/1.45 var(--mono); color: var(--cinza-claro); }
 @media (max-width: 860px) { .busca-grade { grid-template-columns: 1fr; gap: 22px; } .busca-campo input { font-size: 17px; } .busca-sugestoes li { grid-template-columns: 44px 1fr; } .busca-sugestoes .bs-preco { grid-column: 2; text-align: left; font-size: 19px; } }
+
+/* ---------- detector: sugestões do Radar e cartão do produto escolhido ---------- */
+.caixa-texto.auto-radar { position: relative; }
+.busca-sugestoes .bs-dica { display: block; padding: 8px 12px 6px; font: 400 12.5px/1.4 var(--mono); color: var(--grafite-3); cursor: default; }
+.busca-sugestoes .bs-dica:hover { background: transparent; }
+.busca-sugestoes .bs-dica b { color: var(--preto); }
+.busca-sugestoes .bs-vazio a { color: #1A6FA3; font-weight: 700; }
+.radar-produto { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: start; margin-top: 4px; padding: 12px; border: 2px dashed var(--preto); border-radius: 12px; background: var(--papel); }
+.radar-produto[hidden] { display: none; }
+.radar-produto img { width: 64px; height: 64px; object-fit: contain; background: #fff; border-radius: 8px; }
+.radar-produto b { display: block; font-size: 15.5px; line-height: 1.25; }
+.radar-produto .rp-hoje { display: block; margin-top: 4px; font-size: 15px; }
+.radar-produto .rp-hoje strong { font-family: var(--display); font-weight: 400; font-size: 22px; letter-spacing: .01em; }
+.radar-produto .rp-hist { display: block; margin-top: 2px; font: 400 12.5px/1.45 var(--mono); color: var(--grafite-3); }
+.radar-produto .rp-links { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; margin-top: 8px; font-size: 14px; font-weight: 700; }
+.radar-produto .rp-links a, .mais-barato a { color: #1A6FA3; text-decoration: underline; text-underline-offset: 3px; font-weight: 700; }
+.radar-produto .rp-links small, .mais-barato small { font: 400 11.5px/1.3 var(--mono); color: var(--cinza); }
+.nota-radar { font: 400 12.5px/1.4 var(--mono); color: var(--verde-escuro); }
+.nota-radar[hidden] { display: none; }
+.veredito .mais-barato { padding: 10px 12px; border-radius: 10px; background: #E6F9EF; border: 2px solid var(--verde); font-size: 15px; }
+.veredito .mais-barato.ok { background: var(--papel); border-color: var(--linha); }
+@media (max-width: 860px) {
+  .busca-sugestoes li { row-gap: 2px; padding: 8px; }
+  .busca-sugestoes .bs-preco { font-size: 17px; }
+  .busca-sugestoes .bs-preco small { display: inline; margin-left: 6px; }
+}
