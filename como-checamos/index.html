@@ -2,16 +2,17 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Como checamos as promoções: selos e preço alvo | Promoção Sem Papo</title>
-<meta name="description" content="Os critérios do Promoção Sem Papo: os quatro selos, o preço alvo, o preço final com frete e cupom e de onde vêm os preços.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Como checamos uma promoção · Promoção Sem Papo</title>
+<meta name="description" content="Como o Promoção Sem Papo decide se uma promoção é de verdade: histórico de preço, preço alvo, preço final e loja confiável. E como o canal ganha dinheiro.">
 <link rel="canonical" href="https://sempapo.com.br/como-checamos/">
 <meta name="theme-color" content="#FFD60A">
+<meta name="color-scheme" content="light">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Promoção Sem Papo">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:title" content="Como checamos as promoções: selos e preço alvo | Promoção Sem Papo">
-<meta property="og:description" content="Os critérios do Promoção Sem Papo: os quatro selos, o preço alvo, o preço final com frete e cupom e de onde vêm os preços.">
+<meta property="og:title" content="Como checamos uma promoção · Promoção Sem Papo">
+<meta property="og:description" content="Como o Promoção Sem Papo decide se uma promoção é de verdade: histórico de preço, preço alvo, preço final e loja confiável. E como o canal ganha dinheiro.">
 <meta property="og:url" content="https://sempapo.com.br/como-checamos/">
 <meta property="og:image" content="https://sempapo.com.br/static/img/og.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
@@ -21,115 +22,127 @@
 <link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
 <link rel="preload" href="/static/fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/static/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/static/css/site.css?v=202610101958">
+<link rel="stylesheet" href="/static/css/site.css?v=202610151349">
 </head>
-<body class="pg-metodo">
+<body class="pg-texto">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <header class="topo">
-  <div class="envelope">
+  <div class="envelope topo-in">
     <a class="logo" href="/" aria-label="Promoção Sem Papo: início"><svg viewBox="0 0 236 72" role="img" aria-label="Promoção Sem Papo" xmlns="http://www.w3.org/2000/svg">
   <path d="M30 3 H221 a12 12 0 0 1 12 12 V57 a12 12 0 0 1 -12 12 H30 L4 36 Z" fill="#FFD60A" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
-  <circle cx="27" cy="36" r="6.5" fill="#FFD60A" stroke="#111" stroke-width="3.5"/>
+  <circle cx="27" cy="36" r="6.5" fill="#fff" stroke="#111" stroke-width="3.5"/>
   <text x="44" y="27" font-family="Inter, Arial, sans-serif" font-weight="900" font-size="13.5" letter-spacing="2.6" fill="#111">PROMOÇÃO</text>
   <text x="43" y="60" font-family="Anton, Impact, sans-serif" font-size="34" letter-spacing=".6" fill="#111">SEM PAPO</text>
   <path d="M204 20 l16 16 M220 20 l-16 16" stroke="#FF3B30" stroke-width="5" stroke-linecap="round"/>
 </svg></a>
-    <nav class="nav" aria-label="Principal">
-<a href="/ofertas/">Ofertas</a><a href="/promocao-falsa/">Detector</a><a href="/black-friday-2026/">Black Friday 2026</a><a href="/como-checamos/" aria-current="page">Como checamos</a>    </nav>
-    <a class="btn-tg" href="https://t.me/promocaosempapo" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.4l-5-1.6c-1.1-.3-1.1-1.1.2-1.6L20.4 2.8c.9-.3 1.7.2 1.5 1.5Z"/></svg> Alertas grátis</a>
-    <details class="menu">
-      <summary aria-label="Abrir menu">Menu</summary>
-      <div class="menu-lista">
-<a href="/ofertas/">Ofertas</a><a href="/promocao-falsa/">Detector</a><a href="/black-friday-2026/">Black Friday 2026</a><a href="/como-checamos/">Como checamos</a>        <a href="https://t.me/promocaosempapo" rel="noopener">Alertas no Telegram</a>
-        <a href="https://whatsapp.com/channel/0029VbDUYvbF1YlStBGo7J1h" rel="noopener">Alertas no WhatsApp</a>
-      </div>
-    </details>
+    <nav class="topo-canais" aria-label="Nossos canais de alerta">
+      <a class="chip chip-wa" href="https://whatsapp.com/channel/0029VbDUYvbF1YlStBGo7J1h" rel="noopener" target="_blank" aria-label="Canal no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.83 9.83 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.17-1.24-6.16-3.48-8.4Z"/></svg><span>WhatsApp</span></a>
+      <a class="chip chip-tg" href="https://t.me/promocaosempapo" rel="noopener" target="_blank" aria-label="Canal no Telegram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.4l-5-1.6c-1.1-.3-1.1-1.1.2-1.6L20.4 2.8c.9-.3 1.7.2 1.5 1.5Z"/></svg><span>Telegram</span></a>
+    </nav>
   </div>
 </header>
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-trilho">
-<span class="ticker-item"><b class="v">🟢 PREÇO REAL</b> iPhone 16e 128 GB · checado em vídeo, 08/10 às 22h30</span><span class="ticker-item"><b class="v">🟢 PREÇO REAL</b> pode comprar</span><span class="ticker-item"><b class="a">🟡 ESPERE</b> faltam R$ X para o preço certo</span><span class="ticker-item"><b class="r">🔴 MAQUIADO</b> o desconto não existe</span><span class="ticker-item"><b>⚫ FURADA</b> nem de graça</span><span class="ticker-item"><b>BLACK FRIDAY</b> sexta, 27/11/2026</span><span class="ticker-item"><b>RADAR</b> histórico de preço checado</span><span class="ticker-item"><b>#PUBLI</b> sem rodeio: você não paga nada a mais</span><span class="ticker-item"><b class="v">🟢 PREÇO REAL</b> iPhone 16e 128 GB · checado em vídeo, 08/10 às 22h30</span><span class="ticker-item"><b class="v">🟢 PREÇO REAL</b> pode comprar</span><span class="ticker-item"><b class="a">🟡 ESPERE</b> faltam R$ X para o preço certo</span><span class="ticker-item"><b class="r">🔴 MAQUIADO</b> o desconto não existe</span><span class="ticker-item"><b>⚫ FURADA</b> nem de graça</span><span class="ticker-item"><b>BLACK FRIDAY</b> sexta, 27/11/2026</span><span class="ticker-item"><b>RADAR</b> histórico de preço checado</span><span class="ticker-item"><b>#PUBLI</b> sem rodeio: você não paga nada a mais</span>  </div>
-</div>
+
 <main id="conteudo">
-<section class="cabeca-pag">
+<section class="hero hero-texto">
   <div class="envelope">
-    <span class="rotulo">O método</span>
-    <h1>Como a gente checa</h1>
-    <p>Os critérios são públicos: os selos, o preço alvo, o que conta como preço final e de onde vêm os preços.</p>
+    <a class="voltar" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Ver as promoções</a>
+    <h1>Como a gente <span class="tarja">checa</span></h1>
+    <p class="hero-sub">Etiqueta com "de R$ 5.000 por R$ 2.999" não prova nada. Por isso, antes de chamar de promoção, a gente olha o histórico.</p>
   </div>
 </section>
+
 <section class="secao">
-  <div class="envelope"><div class="texto">
-    <h2>Os quatro selos</h2>
-<ul>
-  <li><b>🟢 Preço real:</b> o preço final está no preço alvo ou abaixo dele, a loja é confiável e o produto foi aprovado. Pode comprar.</li>
-  <li><b>🟡 Espere:</b> o produto é bom, mas o preço está acima do alvo. A gente diz quanto falta.</li>
-  <li><b>🔴 Maquiado:</b> o "de" riscado está 25% ou mais acima do preço normal dos últimos 90 dias, ou o preço subiu 15% ou mais nas 6 semanas antes do evento e o "desconto" só devolve o preço antigo.</li>
-  <li><b>⚫ Furada:</b> o produto é ruim ou não entrega o que promete, a qualquer preço. A gente indica outro.</li>
-</ul>
-<p>Na dúvida, o selo é amarelo, nunca verde.</p>
+  <div class="envelope texto">
+    <article class="bloco">
+      <h2>Preço real: quando dá para comprar</h2>
+      <p>Cada produto tem um <b>preço alvo</b>: o preço que vale pagar por ele. A conta usa os preços de cada dia dos últimos 90 a 180 dias nas lojas confiáveis e pega um valor que só aparece em cerca de 1 a cada 7 dias.</p>
+      <p>Se o preço de hoje está no alvo ou abaixo dele, o selo é <b>preço real</b>: pode comprar. Se está acima, é <b>espere</b>, e a gente diz quanto falta. Na dúvida, é sempre "espere".</p>
+      <p>Quando ainda não temos 90 dias de dados próprios, o alvo vem do histórico público (como o Zoom) e é marcado como provisório.</p>
+    </article>
 
-<h2>O preço alvo</h2>
-<p>É o preço que vale pagar por aquele produto. Ele fica no <b>percentil 15</b> dos preços diários dos últimos 90 a 180 dias nas lojas confiáveis: um preço que aparece em cerca de 1 de cada 7 dias. Arredondamos para baixo e revisamos todo mês.</p>
-<p>Quando ainda não temos 90 dias de dados próprios, estimamos pelo histórico público (Zoom, Buscapé, Google Shopping) e marcamos como <b>alvo provisório</b>.</p>
+    <article class="bloco">
+      <h2>Ainda válida ou a oferta passou?</h2>
+      <p>Na página inicial, cada promoção que publicamos mostra se ainda vale. A gente volta na loja e confere o preço de novo, e a data e a hora ficam escritas no card.</p>
+      <p>Cada card compara três preços: o <b>preço médio</b> dos 90 dias antes do vídeo (a média do menor preço à vista de cada dia, pelo Zoom), o preço que <b>encontramos</b> e o preço de <b>hoje</b>.</p>
+      <ul>
+        <li><b>Ainda válida:</b> o preço de hoje continua no preço alvo ou abaixo dele.</li>
+        <li><b>A oferta passou:</b> o preço subiu e ficou acima do alvo.</li>
+      </ul>
+    </article>
 
-<h2>O que conta como preço final</h2>
-<ul>
-  <li>Inclui o frete para um CEP padrão (São Paulo capital) e o cupom público, que qualquer pessoa consegue usar.</li>
-  <li>Cashback, cupom de primeira compra e desconto de cartão específico aparecem como extra, nunca no preço final.</li>
-  <li>Se o preço no Pix for diferente do parcelado, os dois aparecem separados.</li>
-  <li>Todo preço tem data e hora. Preço muda a toda hora, e a gente mostra quando viu.</li>
-</ul>
+    <article class="bloco">
+      <h2>O que conta como preço</h2>
+      <ul>
+        <li>O preço final, com frete para São Paulo capital e cupom que qualquer pessoa pode usar.</li>
+        <li>Cashback, cupom de primeira compra, desconto de um cartão específico e preço só para assinantes (como o Prime) aparecem como extra, nunca como o preço principal.</li>
+        <li>Se o preço no Pix for diferente do parcelado, os dois aparecem separados.</li>
+        <li>Todo preço tem data e hora. Preço muda a toda hora, e a gente mostra quando viu.</li>
+      </ul>
+    </article>
 
-<h2>Lojas e produtos confiáveis</h2>
-<ul>
-  <li>Vendido e entregue pela própria loja, ou pela loja oficial da marca no marketplace.</li>
-  <li>Reputação boa no Reclame Aqui nos últimos 6 meses.</li>
-  <li>No Mercado Livre, o nosso Radar só considera loja oficial ou vendedor MercadoLíder Platinum com a reputação máxima. Loja reprovada na nossa conferência do Reclame Aqui fica de fora, mesmo sendo loja oficial. Preço baixo de vendedor sem reputação não entra: é o tipo de "oferta" que mais vira dor de cabeça.</li>
-  <li>Produto com avaliação de 4,3 ou mais, com pelo menos 100 avaliações. Nada de réplica nem produto sem garantia no Brasil.</li>
-</ul>
+    <article class="bloco">
+      <h2>Lojas confiáveis</h2>
+      <ul>
+        <li>Vendido e entregue pela própria loja, ou pela loja oficial da marca no marketplace.</li>
+        <li>Boa reputação no Reclame Aqui nos últimos 6 meses.</li>
+        <li>Produto bem avaliado, com garantia no Brasil. Nada de réplica.</li>
+      </ul>
+    </article>
 
-<h2>De onde vêm os preços</h2>
-<p>Das próprias lojas, pelos canais oficiais que elas oferecem a parceiros (APIs e feeds de produtos), e de conferência manual nos comparadores públicos. Não usamos robôs onde a loja proíbe.</p>
-<p>Na Amazon, por regra do programa de associados, não mostramos histórico nem alerta automático de preço. Os produtos da Amazon aparecem só em conteúdo editorial, com o preço sempre acompanhado de data e hora.</p>
+    <article class="bloco" id="transparencia">
+      <h2>Como o canal ganha dinheiro</h2>
+      <p>Os links para as lojas são <b>links de afiliado</b>. Quando você compra por eles, a loja paga uma comissão ao Promoção Sem Papo, e <b>você não paga nada a mais</b>. Por isso, todo conteúdo com link avisa: <b>#publi</b>.</p>
+      <p><b>Nenhuma loja paga para aparecer aqui.</b> A comissão não muda o selo: se o desconto for maquiado, a gente diz, mesmo que a loja seja parceira.</p>
+<p>Como Associado da Amazon, ganho com compras qualificadas.</p>      <p>Este site não tem cadastro, não pede seus dados e não usa cookies de rastreamento próprios.</p>
+    </article>
 
-<h2>Errou? A gente corrige</h2>
-<p>Se um selo estiver errado, a correção sai no mesmo dia, aqui, no Telegram e num comentário fixado no YouTube. Viu algo estranho? Avise no <a href="https://t.me/promocaosempapo" rel="noopener">Telegram</a>.</p>
-  </div></div>
+    <article class="bloco">
+      <h2>Errou? A gente corrige</h2>
+      <p>Se um preço ou um selo estiver errado, a correção sai no mesmo dia: aqui, no Telegram e num comentário fixado no YouTube. Viu algo estranho? Avise no <a href="https://t.me/promocaosempapo" rel="noopener" target="_blank">Telegram</a>.</p>
+    </article>
+  </div>
+</section>
+
+<section class="faixa">
+  <div class="envelope">
+    <div class="faixa-in">
+      <div class="faixa-txt">
+        <h2>Receba as próximas.</h2>
+        <p>As promoções que passam na checagem vão para o WhatsApp e para o Telegram.</p>
+      </div>
+      <div class="botoes faixa-botoes">
+  <a class="btn btn-wa" href="https://whatsapp.com/channel/0029VbDUYvbF1YlStBGo7J1h" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.83 9.83 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.17-1.24-6.16-3.48-8.4Z"/></svg><span>Entrar no WhatsApp</span></a>
+  <a class="btn btn-tg" href="https://t.me/promocaosempapo" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.4l-5-1.6c-1.1-.3-1.1-1.1.2-1.6L20.4 2.8c.9-.3 1.7.2 1.5 1.5Z"/></svg><span>Entrar no Telegram</span></a>
+</div>
+    </div>
+  </div>
 </section>
 </main>
+
 <footer class="rodape">
-  <div class="envelope">
-    <div class="colunas">
-      <div>
-        <a class="logo" href="/"><svg viewBox="0 0 236 72" role="img" aria-label="Promoção Sem Papo" xmlns="http://www.w3.org/2000/svg">
+  <div class="envelope rodape-in">
+    <div class="rodape-marca">
+      <a class="logo" href="/" aria-label="Promoção Sem Papo: início"><svg viewBox="0 0 236 72" role="img" aria-label="Promoção Sem Papo" xmlns="http://www.w3.org/2000/svg">
   <path d="M30 3 H221 a12 12 0 0 1 12 12 V57 a12 12 0 0 1 -12 12 H30 L4 36 Z" fill="#FFD60A" stroke="#111" stroke-width="4" stroke-linejoin="round"/>
-  <circle cx="27" cy="36" r="6.5" fill="#111111" stroke="#111" stroke-width="3.5"/>
+  <circle cx="27" cy="36" r="6.5" fill="#fff" stroke="#111" stroke-width="3.5"/>
   <text x="44" y="27" font-family="Inter, Arial, sans-serif" font-weight="900" font-size="13.5" letter-spacing="2.6" fill="#111">PROMOÇÃO</text>
   <text x="43" y="60" font-family="Anton, Impact, sans-serif" font-size="34" letter-spacing=".6" fill="#111">SEM PAPO</text>
   <path d="M204 20 l16 16 M220 20 l-16 16" stroke="#FF3B30" stroke-width="5" stroke-linecap="round"/>
 </svg></a>
-        <p>Promoção de verdade, preço certo, sem papo. A gente vigia o preço de tecnologia e eletro e diz se o desconto existe.</p>
-      </div>
-      <div>
-        <h4>Navegue</h4>
-<a href="/ofertas/">Ofertas</a><a href="/promocao-falsa/">Detector</a><a href="/black-friday-2026/">Black Friday 2026</a><a href="/como-checamos/">Como checamos</a>        <a href="/transparencia/">Transparência</a>
-      </div>
-      <div>
-        <h4>Siga</h4>
-        <a href="https://t.me/promocaosempapo" rel="noopener">Telegram: alertas</a>
-        <a href="https://whatsapp.com/channel/0029VbDUYvbF1YlStBGo7J1h" rel="noopener">WhatsApp: alertas</a>
-        <a href="https://www.youtube.com/@promocaosempapo" rel="noopener">YouTube</a>
-      </div>
+      <p>Promoção de tecnologia e eletro, checada no histórico de preço. Sem papo.</p>
+      <nav class="rodape-links" aria-label="Rodapé">
+        <a href="https://whatsapp.com/channel/0029VbDUYvbF1YlStBGo7J1h" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.83 9.83 0 0 1 9.88 9.89c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.17-1.24-6.16-3.48-8.4Z"/></svg> WhatsApp</a>
+        <a href="https://t.me/promocaosempapo" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.4l-5-1.6c-1.1-.3-1.1-1.1.2-1.6L20.4 2.8c.9-.3 1.7.2 1.5 1.5Z"/></svg> Telegram</a>
+        <a href="https://www.youtube.com/@promocaosempapo" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.7 15.1V8.9L15.5 12l-5.8 3.1Z"/></svg> YouTube</a>
+        <a href="/como-checamos/">Como checamos</a>
+      </nav>
     </div>
-    <div class="legal">
-      #publi · Alguns links do site são de afiliado: se você comprar por eles, o canal ganha uma comissão e você não paga nada a mais. Nenhuma loja paga para aparecer aqui.
-      Os preços e a disponibilidade dos produtos estão corretos na data e no horário indicados e podem mudar.
-      Como Associado da Amazon, ganho com compras qualificadas.<br>
-      © 2026 Promoção Sem Papo · sempapo.com.br
+    <div class="rodape-letras">
+      <p><b>#publi</b> Links de afiliado: se você comprar por eles, o canal ganha uma comissão e você não paga nada a mais. Nenhuma loja paga para aparecer aqui.</p>
+<p>Como Associado da Amazon, ganho com compras qualificadas.</p>      <p>Os preços e a disponibilidade dos produtos estão corretos na data e no horário indicados e podem mudar. Confira o preço final no carrinho da loja antes de pagar.</p>
+<p>Fotos dos produtos: divulgação das marcas (Motorola e Samsung). iPhone 16e: desenho nosso.</p>      <p>© 2026 Promoção Sem Papo</p>
     </div>
   </div>
 </footer>
-<a class="barra-cel" href="https://t.me/promocaosempapo" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.6 19.8c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.4l-5-1.6c-1.1-.3-1.1-1.1.2-1.6L20.4 2.8c.9-.3 1.7.2 1.5 1.5Z"/></svg> Receber alertas grátis no Telegram</a>
-<script src="/static/js/site.js?v=202610101958" defer></script>
 </body>
 </html>
